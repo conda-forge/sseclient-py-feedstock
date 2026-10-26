@@ -1,23 +1,25 @@
 {% set name = "sseclient-py" %}
-{% set version = "1.8.0" %}
+{% set version = "1.9.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sseclient-py-{{ version }}.tar.gz
-  sha256: c547c5c1a7633230a38dc599a21a2dc638f9b5c297286b48b46b935c71fac3e8
+  # 1.9.0 was published to PyPI as a wheel only, so build from the GitHub tag
+  url: https://github.com/mpetazzoni/sseclient/archive/refs/tags/sseclient-py-{{ version }}.tar.gz
+  sha256: 467b6abcc5833e17195c0be6a18f599cb2a3a784f5ec16d539e5d1d6273d3745
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
     - python {{ python_min }}
     - pip
+    - hatchling
   run:
     - python >={{ python_min }}
 
@@ -32,7 +34,6 @@ test:
 
 about:
   home: https://github.com/mpetazzoni/sseclient
-  summary: SSE client for Python
   license: Apache-2.0
   license_file: LICENSE
   summary: A Python client for SSE event sources that seamlessly integrates with urllib3 and requests.
