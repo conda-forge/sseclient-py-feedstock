@@ -1,5 +1,5 @@
 {% set name = "sseclient-py" %}
-{% set version = "1.9.0" %}
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 source:
   # 1.9.0 was published to PyPI as a wheel only, so build from the GitHub tag
   url: https://github.com/mpetazzoni/sseclient/archive/refs/tags/sseclient-py-{{ version }}.tar.gz
-  sha256: 467b6abcc5833e17195c0be6a18f599cb2a3a784f5ec16d539e5d1d6273d3745
+  sha256: 84cf961ea23ca27a9616d1e5f404d8c3b9d839d09d84ed19360915dec2c64cd9
 
 build:
   noarch: python
